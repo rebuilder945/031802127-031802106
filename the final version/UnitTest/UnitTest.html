@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>单元测试</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <script src="./qunit-2.11.3.js"></script>
+    <script src="../main/handle.js"></script>
+    <script src="../main/jquery-2.2.1.js"></script>
+    <link rel="stylesheet" href="./qunit-2.11.3.css">
+
+    <script>
+        $.getJSON("./testCase.json", function (data) { //从testCase.json中获取10个测试用例并测试
+            var testCase1 = data.testCase[0];
+            var testCase1_Expected = JSON.stringify(data.testCase_Expected[0]);
+            var testCase2 = data.testCase[1];
+            var testCase2_Expected = JSON.stringify(data.testCase_Expected[1]);            
+            var testCase3 = data.testCase[2];
+            var testCase3_Expected = JSON.stringify(data.testCase_Expected[2]); 
+            var testCase4 = data.testCase[3];
+            var testCase4_Expected = JSON.stringify(data.testCase_Expected[3]); 
+            var testCase5 = data.testCase[4];
+            var testCase5_Expected = JSON.stringify(data.testCase_Expected[4]); 
+            var testCase6 = data.testCase[5];
+            var testCase6_Expected = JSON.stringify(data.testCase_Expected[5]); 
+            var testCase7 = data.testCase[6];
+            var testCase7_Expected = JSON.stringify(data.testCase_Expected[6]); 
+            var testCase8 = data.testCase[7];
+            var testCase8_Expected = JSON.stringify(data.testCase_Expected[7]); 
+            var testCase9 = data.testCase[8];
+            var testCase9_Expected = JSON.stringify(data.testCase_Expected[8]); 
+            var testCase10 = data.testCase[9];
+            var testCase10_Expected = JSON.stringify(data.testCase_Expected[9]); 
+            
+            QUnit.test("strParse() test", function (assert) {
+                assert.equal(strParse_Test(testCase1), testCase1_Expected);
+                assert.equal(strParse_Test(testCase2), testCase2_Expected);
+                assert.equal(strParse_Test(testCase3), testCase3_Expected);
+                assert.equal(strParse_Test(testCase4), testCase4_Expected);
+                assert.equal(strParse_Test(testCase5), testCase5_Expected);
+                assert.equal(strParse_Test(testCase6), testCase6_Expected);
+                assert.equal(strParse_Test(testCase7), testCase7_Expected);
+                assert.equal(strParse_Test(testCase8), testCase8_Expected);
+                assert.equal(strParse_Test(testCase9), testCase9_Expected);
+                assert.equal(strParse_Test(testCase10), testCase10_Expected);                
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="qunit"></div>
+</body>
+
+</html>

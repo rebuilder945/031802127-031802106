@@ -1,15 +1,15 @@
-
 var ijson;
+
 function delItem(item, list) {
-    var x = list.indexOf(item);    
-    if (x == -1) {            
+    var x = list.indexOf(item);
+    if (x == -1) {
         return;
     }
     list.splice(x, 1)
     delItem(item, list);
 }
 
-function strParse() {       
+function strParse() {
     var tree = {
         "name": '师门树',
         "children": [
@@ -55,17 +55,16 @@ function strParse() {
 
 
     var data = new String;
-    var n = document.getElementById("textbox").value; 
-    var y = sessionStorage.getItem("y");    
-    if(n == "")//拖拽文件输入
-    {        
-        y = y.replace(/\\r\\n/g, '\n');        
-        data = y;            
-    }
-    else //输入框输入
+    var n = document.getElementById("textbox").value;
+    var y = sessionStorage.getItem("y");
+    if (n == "") //拖拽文件输入
     {
-        data = n;     
-    }        
+        y = y.replace(/\\r\\n/g, '\n');
+        data = y;
+    } else //输入框输入
+    {
+        data = n;
+    }
     var num = 0;
     var StuParts = [];
     var teachers = data.split(/\n\n\n/g); //按导师分块				
@@ -133,6 +132,11 @@ function strParse() {
             degrees = "";
             years = "";
             name = "";
+            var x = StuParts[i][0].indexOf("：");
+            var teacherName = "";
+            while (++x < StuParts[i][0].length) {
+                teacherName += StuParts[i][0][x];
+            }
             if (StuParts[i][j][0] >= '0' && StuParts[i][j][0] <= '9') {
 
                 while (StuParts[i][j][++k] != "级") { //years
@@ -141,8 +145,8 @@ function strParse() {
                 while (StuParts[i][j][++k] != "：") { //degrees
                     degrees += StuParts[i][j][k];
                 }
-                year.name = years;
-                degree.name = degrees;
+                year.name = teacherName + "的" + years + "级" +degrees;
+                degree.name = teacherName + "的" + degrees;
 
                 //person parse and insert year
                 while (++k < StuParts[i][j].length) {
@@ -221,11 +225,7 @@ function strParse() {
             }
 
         }
-        var x = StuParts[i][0].indexOf("：");
-        var teacherName = "";
-        while (++x < StuParts[i][0].length) {
-            teacherName += StuParts[i][0][x];
-        }
+
         teacher.name = teacherName;
         tree.children.push(teacher);
         teacher = {
@@ -234,10 +234,10 @@ function strParse() {
 
             ]
         };
-    }    
-    
-    ijson = JSON.stringify(tree);       
-    sessionStorage.setItem("x", ijson);    
+    }
+
+    ijson = JSON.stringify(tree);
+    sessionStorage.setItem("x", ijson);
     location.reload();
 
 }
@@ -459,8 +459,8 @@ function strParse_Test(testCase) {
 
             ]
         };
-    }    
-    
-    ijson = JSON.stringify(tree);           
+    }
+
+    ijson = JSON.stringify(tree);
     return ijson;
 }

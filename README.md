@@ -11,7 +11,7 @@ software-project task 4th ( Pair programming )
 
 ### 使用说明：
 
-1、**下载**压缩包，打开**the final version**文件夹；
+1、**下载**压缩包，打开**final bueatify vision**文件夹；
 
 2、直接浏览器打开***main/main.html***即可；
 
